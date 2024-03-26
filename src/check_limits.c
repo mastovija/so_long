@@ -22,7 +22,6 @@
 void	error_in_limits(void)
 {
 	ft_printf("Error!\nThe number of barrels is insufficient.\n");
-	ft_printf("Please put a barrel in the specified locations.\n");
 	exit(1);
 }
 

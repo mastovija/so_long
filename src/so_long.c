@@ -66,7 +66,8 @@ void	initialization(t_game *game)
 	game->collectibles = 0;
 	game->exit = 0;
 }
-
+//checks that there are only 2 arguments and
+//that the last 4 chars are .ber
 void	check_args(int argc, char **argv)
 {
 	size_t	len;

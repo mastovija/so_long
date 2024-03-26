@@ -63,6 +63,8 @@ void	check_characters(char *buffer, t_game *game)
 		exit(1);
 	}
 }
+// Takes a string (line) and adds a new char to it (c)
+// then frees the old string (line) and returns the new one
 
 char	*ft_join(char *line, char c)
 {
@@ -84,46 +86,32 @@ char	*ft_join(char *line, char c)
 	free(line);
 	return (str);
 }
-
-int	verify(char *line)
-{
-	int	i;
-
-	i = 0;
-	if (!line)
-		return (0);
-	while (line[i])
-	{
-		if (line[i] == '\0')
-			return (1);
-		i++;
-	}
-	return (0);
-}
+// reads a file (map) from the fd
+// constructs a string byte per byte with all the characters
+//(1, 0, E, C, P) that make up the map and then returns
+// the string for further processing
 
 char	*get_map(int fd)
 {
 	char	buffer;
 	char	*line;
 	int		rd_bytes;
+	char	*temp;
 
-	rd_bytes = 1;
-	if (fd < 0)
-		line = NULL;
 	line = malloc(1);
 	line[0] = '\0';
-	while (!verify(line) && rd_bytes > 0)
+	rd_bytes = read(fd, &buffer, 1);
+	while (rd_bytes > 0)
 	{
+		temp = ft_join(line, buffer);
+		line = temp;
 		rd_bytes = read(fd, &buffer, 1);
-		if ((rd_bytes == 0 && line[0] == '\0') || rd_bytes < 0)
-		{
-			free(line);
-			ft_printf("Error\nEmpty map");
-			exit(1);
-		}
-		if (rd_bytes == 0 && line[0] != '\0')
-			return (line);
-		line = ft_join(line, buffer);
+	}
+	if (rd_bytes < 0 || (rd_bytes == 0 && line[0] == '\0'))
+	{
+		free(line);
+		ft_printf("Error\nEmpty map or read error\n");
+		exit(1);
 	}
 	return (line);
 }
