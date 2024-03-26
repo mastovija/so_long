@@ -30,9 +30,9 @@ void	load_images(t_game *game)
 	int		i;
 
 	player_sprites_paths[0] = "./images/alkie2.xpm";
-	player_sprites_paths[1] = "./images/alkie2.xpm";
-	player_sprites_paths[2] = "./images/alkie2.xpm";
-	player_sprites_paths[3] = "./images/alkie2.xpm";
+	player_sprites_paths[1] = "./images/alkie3.xpm";
+	player_sprites_paths[2] = "./images/alkie4.xpm";
+	player_sprites_paths[3] = "./images/alkie5.xpm";
 	i = 0;
 	load_image_to_game(game, &game->img_wall, "./images/barrel.xpm");
 	load_image_to_game(game, &game->img_collectible, "./images/beer.xpm");
