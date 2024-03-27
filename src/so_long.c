@@ -26,6 +26,14 @@ void	create_window(t_game *game)
 	load_images(game);
 	fill_window(game);
 }
+//Main function to validate a map
+//First gets the whole map into one string (buffer)
+//Checks that only valid chars form that string
+//then creates the 2D map splitting the string with each \n
+//gets the width of the map
+//checks that map is rectangular
+//checks that there is a possible path to play and finish the game
+//frees the memory used for buffer and the game map
 
 void	validate_map(char **argv, t_game *game)
 {
@@ -68,6 +76,7 @@ void	initialization(t_game *game)
 }
 //checks that there are only 2 arguments and
 //that the last 4 chars are .ber
+
 void	check_args(int argc, char **argv)
 {
 	size_t	len;

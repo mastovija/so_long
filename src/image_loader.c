@@ -13,6 +13,10 @@
 #include "../include/so_long.h"
 #include "../printf/ft_printf.h"
 
+// Loads an image from an XPM file specified by 'path' using MiniLibX
+// and associates it with a game element by storing the image pointer 
+//in 'img_ptr'
+
 void	load_image_to_game(t_game *game, void **img_ptr, char *path)
 {
 	*img_ptr = mlx_xpm_file_to_image(game->mlx_ptr, path, &game->tile_size,
@@ -23,6 +27,8 @@ void	load_image_to_game(t_game *game, void **img_ptr, char *path)
 		exit(1);
 	}
 }
+// loads all the XPM's of the game inside the corresponding game variables
+// that then are converted to images
 
 void	load_images(t_game *game)
 {
@@ -47,6 +53,8 @@ void	load_images(t_game *game)
 		i++;
 	}
 }
+// Updates the player's animation frame based on elapsed time
+// cycling through frames every 1/100th of a second
 
 void	update_player_animation(t_game *game)
 {

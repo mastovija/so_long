@@ -11,6 +11,10 @@
 /* ************************************************************************** */
 #include "../include/so_long.h"
 #include "../printf/ft_printf.h"
+//this function 'plays' all possible movements starting from P
+//to check if there is a way to collect all C's and get to the E
+//It iterates recursively and checks step by step for a possible path
+//after stepping in a location it put its as a 1 to not check again
 
 void	validate_path(int y, int x, t_game *game)
 {
@@ -28,6 +32,10 @@ void	validate_path(int y, int x, t_game *game)
 	validate_path((y + 1), x, game);
 	return ;
 }
+//checks tile by tile until finding the player
+//From the position of the player calls validate_path to
+//ensure there is a possible path to collect all C's and get to E
+//If there is resets x and y, if not exits with error
 
 void	check_path(t_game *game)
 {

@@ -13,7 +13,10 @@
 #include "../include/so_long.h"
 #include "../libft/libft.h"
 #include "../printf/ft_printf.h"
-
+//checks that the map is rectangular
+//counts the number of tiles by counting each char
+//minus the /n and then if map_area is not width * height
+//means is not rectangular
 void	verify_map(char *buffer, t_game *game)
 {
 	int	x;
@@ -29,12 +32,14 @@ void	verify_map(char *buffer, t_game *game)
 		game->map_height++;
 	if (game->map_area != game->map_width * game->map_height)
 	{
-		ft_printf("Error!\nThe map does not contain the correct plane figure.\n");
+		ft_printf("Error!\nThe map has to be rectangular.\n");
 		exit(1);
 	}
 	check_limit_x(game);
 	check_limit_y(game);
 }
+//Checks all the chars that represent a map
+//Only 1 P, at least 1 C, only 1 E and only 0's and 1's
 
 void	check_characters(char *buffer, t_game *game)
 {
